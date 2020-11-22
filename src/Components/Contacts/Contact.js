@@ -17,10 +17,9 @@ export default class Contacts extends Component {
     onShowClick = e =>{
         this.setState({showContact:!this.state.showContact})
     }
-    deleteContact=(id,dispatch)=>{
-        console.log(dispatch)
-        console.log(id)
-        dispatch({type:'DELETE',payload:id})//action obj contains to values action{ type , payload}
+    deleteContact=(id,MakeOpperationOnSharedState)=>{
+    
+        MakeOpperationOnSharedState({type:'DELETE',payload:id})//action obj contains to values action{ type , payload}
 
     }
     render() {
@@ -28,12 +27,12 @@ export default class Contacts extends Component {
          return(
         <Consumer>
             {value =>{
-                const { dispatch } = value
+                const { MakeOpperationOnSharedState } = value
                 return(
                     <div className="card card-body mb-3">
                 <h4 >{name} 
                 <i onClick={this.onShowClick} class="fas fa-chevron-down" style={{cursor:"pointer"}}></i>
-                <i onClick={this.deleteContact.bind(this,id,dispatch)} class="fas fa-trash-alt" style={{cursor:"pointer",float:"right" , color:"red"}}></i>
+                <i onClick={this.deleteContact.bind(this,id,MakeOpperationOnSharedState)} class="fas fa-trash-alt" style={{cursor:"pointer",float:"right" , color:"red"}}></i>
                 </h4>
                
                 

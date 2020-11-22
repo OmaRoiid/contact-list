@@ -1,15 +1,20 @@
 import React, { Component } from 'react'
 const Context=React.createContext();
-const reducer=(state,action)=>{
+const Opperation=(state,action)=>{
     switch(action.type){
         case 'DELETE':
             return{
-                ...state,
+               
                 contactsList:state.contactsList.filter(contact=>contact.id !== action.payload)
+            }
+              case 'ADD':
+            return{
+                ...state,
+                contactsList:[action.payload,...state.contactsList]
             }
             default:
             return state
-    }
+    } 
 }
 
   class Provider extends Component{
@@ -35,8 +40,8 @@ const reducer=(state,action)=>{
                     phone:"01100636367"
                 },
             ],
-            dispatch:(action)=>{
-                this.setState(state=>reducer(state,action))
+            MakeOpperationOnSharedState:(action)=>{
+                this.setState(state=>Opperation(state,action))
             }
         }
         render(){
