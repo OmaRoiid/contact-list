@@ -21,6 +21,12 @@ import {v1 as uuid} from "uuid";
 
          }
          MakeOpperationOnSharedState({type:'ADD',payload:newContact})
+         this.setState({
+               name:'',
+         email:'',
+         phone:''
+         })
+         this.props.history.push("/")
 
 
      }
@@ -33,7 +39,7 @@ import {v1 as uuid} from "uuid";
                     const { MakeOpperationOnSharedState } =value;
                     return(
                          <div>
-                <h1>Add One</h1>
+                <h1 className="display-4 mb-2">Add new <strong >Contact</strong>  </h1>
                 <div className="card mb-3">
                  <div className="card-header">Add Contact</div>
                  <div className="card-body">
